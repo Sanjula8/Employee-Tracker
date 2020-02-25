@@ -62,6 +62,9 @@ function runSearch() {
 				case "Add Role":
 					roleAdd();
 					break;
+				case "Update Employee":
+					employeeUpdate();
+					break;
 				case "Remove Employee":
 					employeeRemove();
 					break;
@@ -102,6 +105,15 @@ function employeeView() {
 		});
 }
 
+function departmentView() {
+	var query = "SELECT name FROM department";
+	connection.query(query, function(err, res) {
+		for (var i = 0; i < res.length; i++) {
+			console.log(res[i].name);
+		}
+	});
+}
+
 function employeeAdd() {
 	inquirer
 		.prompt({
@@ -121,3 +133,56 @@ function employeeAdd() {
 			});
 		});
 }
+
+// ERROR: ID IS NOT DEFINED; NOT WORKING
+// function employeeRemove() {
+// 	inquirer
+// 		.prompt({
+// 			name: "employeeRemove",
+// 			type: "input",
+// 			message: "To REMOVE an employee, please enter the employee ID"
+// 		})
+// 		.then(function(answer) {
+// 			console.log(answer);
+// 			var query = "DELETE FROM employee WHERE ?";
+// 			var newID = Number(answer.employeeRemove);
+// 			console.log(newId);
+// 			connection.query(query, { id: newID }, function(err, res) {
+// 				runSearch();
+// 			});
+// 		});
+// }
+
+// function employeeUpdate() {
+// 	inquirer
+// 		.prompt({
+// 			name: "employeeUpdate",
+// 			type: "input",
+// 			message: "Enter employee's ID to update:"
+// 		})
+// 		.then(function(answer) {
+// 			console.log(answer);
+// 			var updateID = answer.id;
+
+// 			inquirer
+// 				.prompt({
+// 					name: "roleID",
+// 					type: "input",
+// 					message: "Enter the Role ID you want to update to:"
+// 				})
+// 				.then(function(answer) {
+// 					var newroleID = answer.roleId;
+
+// 					var query = "UPDATE employee SET role_id=? WHERE id=?";
+// 					connection.query(query, [newroleID, updateID], function(
+// 						err,
+// 						res
+// 					) {
+// 						if (err) {
+// 							console.log(err);
+// 						}
+// 						runSearch();
+// 					});
+// 				});
+// 		});
+// }
