@@ -44,3 +44,14 @@ CREATE TABLE employee (
     manager_id INT NULL,
     PRIMARY KEY (id)
 )
+
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES
+('Walt', 'Whitman', 3, null)
+('Emily', 'Dickinson', 2, null)
+('Mark', 'Twain', 1, null)
+('F.Scott', 'Fitzgerald', 4, null)
+('Ernest', 'Hemingway', 5, null)
+('Stephen', 'King', 4, null)
+('Harper', 'Lee', 1, null)
+
