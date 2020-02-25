@@ -68,10 +68,12 @@ function runSearch() {
 					break;
 
 				case "Add Department":
+					// Not working: SYNTAX ERROR?????
 					departmentAdd();
 					break;
 
 				case "Add Role":
+					// Not working: UNDEFINED THINGS???
 					roleAdd();
 					break;
 
@@ -166,6 +168,78 @@ function employeeAdd() {
 			});
 		});
 }
+
+// function roleAdd() {
+// 	inquirer
+// 		.prompt({
+// 			name: "roleTite",
+// 			type: "input",
+// 			message: "Enter a new role name"
+// 		})
+// 		.then(function(answer) {
+// 			var newRoleTitle = answer.roleTitle;
+
+// 			inquirer
+// 				.prompt({
+// 					name: "roleSalary",
+// 					type: "input",
+// 					message: "Enter a new salary for the role"
+// 				})
+// 				.then(function(answer) {
+// 					var newSalary = answer.salary;
+// 					inquirer
+// 						.prompt({
+// 							name: "departmentID",
+// 							type: "input",
+// 							message: ["Enter a new department id for the role"]
+// 						})
+// 						.then(function(answer) {
+// 							var newDepartmentID = answer.departmentID;
+
+// 							console.log(
+// 								`title: ${newRoleTitle} salary: ${newSalary} department id: ${newDepartmentID}`
+// 							);
+
+// 							var query =
+// 								"INSERT INTO role (title, salary, department_id) VALUES ?";
+// 							connection.query(
+// 								query,
+// 								[[[newRoleTitle, newSalary, newDepartmentID]]],
+// 								function(err, res) {
+// 									if (err) {
+// 										console.log(err);
+// 									}
+
+// 									runSearch();
+// 								}
+// 							);
+// 						});
+// 				});
+// 		});
+// }
+
+// function departmentAdd() {
+// 	inquirer
+// 		.prompt({
+// 			name: "departmentAdd",
+// 			type: "input",
+// 			message: "What department would you like to add?"
+// 		})
+// 		.then(function(answer) {
+// 			connection.query(
+// 				"INSET INTO department SET ?",
+// 				{
+// 					department_name: answer.departmentAdd
+// 				}
+// 				// console.log(`\n Added new department: ${departmentAdd}`)
+// 			);
+// 			connection.query("SELECT * FROM department", function(err, result) {
+// 				if (err) throw err;
+// 				console.table(result);
+// 				runSearch();
+// 			});
+// 		});
+// }
 
 // ERROR: ID IS NOT DEFINED; NOT WORKING
 // function employeeRemove() {
