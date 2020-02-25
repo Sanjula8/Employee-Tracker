@@ -107,6 +107,7 @@ function employeeView() {
 				query,
 				{ last_name: answer.employeeView },
 				function(err, res) {
+					if (err) throw err;
 					for (var i = 0; i < res.length; i++) {
 						console.table(
 							"First Name: " +
@@ -145,6 +146,7 @@ function roleView() {
 	});
 }
 
+// Add Employee
 function employeeAdd() {
 	inquirer
 		.prompt({
