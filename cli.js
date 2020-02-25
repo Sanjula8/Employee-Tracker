@@ -29,6 +29,7 @@ function runSearch() {
 				"View all employees",
 				"View all departments",
 				"View all managers",
+				"View all roles",
 				"Add Employee",
 				"Add Department",
 				"Add Role",
@@ -42,19 +43,30 @@ function runSearch() {
 			console.log(answer.action);
 			switch (answer.action) {
 				case "View all employees":
+					// Finished, tested, working
 					employeeView();
 					break;
 
 				case "View all departments":
+					// Finished, tested, working
 					departmentView();
 					break;
+
 				case "View all managers":
+					// Work in progress, not currently working
 					managerView();
 					break;
 
+				case "View all roles":
+					// Finished, tested, working
+					roleView();
+					break;
+
 				case "Add Employee":
+					// Finished, tested, working
 					employeeAdd();
 					break;
+
 				case "Add Department":
 					departmentAdd();
 					break;
@@ -62,12 +74,17 @@ function runSearch() {
 				case "Add Role":
 					roleAdd();
 					break;
+
 				case "Update Employee":
+					// Not working::ERROR
 					employeeUpdate();
 					break;
+
 				case "Remove Employee":
+					// Not working::ERROR
 					employeeRemove();
 					break;
+
 				case "Exit":
 					connection.end();
 					break;
@@ -75,6 +92,7 @@ function runSearch() {
 		});
 }
 
+// View employees by last name:
 function employeeView() {
 	inquirer
 		.prompt({
@@ -90,7 +108,7 @@ function employeeView() {
 				{ last_name: answer.employeeView },
 				function(err, res) {
 					for (var i = 0; i < res.length; i++) {
-						console.log(
+						console.table(
 							"First Name: " +
 								res[i].first_name +
 								" || Last name: " +
@@ -105,12 +123,25 @@ function employeeView() {
 		});
 }
 
+// View all departments:
 function departmentView() {
 	var query = "SELECT name FROM department";
 	connection.query(query, function(err, res) {
-		for (var i = 0; i < res.length; i++) {
-			console.log(res[i].name);
-		}
+		if (err) throw err;
+		console.table(res);
+	});
+}
+
+// function managerView(){
+// Not sure what to select from here
+// }
+
+// View Roles
+function roleView() {
+	var query = "SELECT * FROM roles";
+	connection.query(query, function(err, res) {
+		if (err) throw err;
+		console.table(res);
 	});
 }
 
