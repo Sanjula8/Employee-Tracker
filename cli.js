@@ -1,6 +1,6 @@
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
-const cTable = require("console.table");
+require("console.table");
 
 const connection = mysql.createConnection({
 	host: "localhost",
@@ -69,5 +69,35 @@ function runSearch() {
 					connection.end();
 					break;
 			}
+		});
+}
+
+function employeeView() {
+	inquirer
+		.prompt({
+			name: "employeeView",
+			type: "input",
+			message: "Search employee by last name:"
+		})
+		.then(function(answer) {
+			var query =
+				"SELECT first_name, last_name, id FROM employee WHERE ?";
+			connection.query(
+				query,
+				{ last_name: answer.employeeView },
+				function(err, res) {
+					for (var i = 0; i < res.length; i++) {
+						console.log(
+							"First Name: " +
+								res[i].first_name +
+								" || Last name: " +
+								res[i].last_name +
+								" || Id: " +
+								res[i].id
+						);
+					}
+					runSearch();
+				}
+			);
 		});
 }
