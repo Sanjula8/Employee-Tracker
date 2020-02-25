@@ -101,3 +101,23 @@ function employeeView() {
 			);
 		});
 }
+
+function employeeAdd() {
+	inquirer
+		.prompt({
+			name: "employeeAdd",
+			type: "input",
+			message: [
+				"To ADD an employee, please enter EMPLOYEE first name and last name"
+			]
+		})
+		.then(function(answer) {
+			console.log(answer);
+			var str = answer.employeeAdd;
+			var firstandLastName = str.split(" ");
+			var query = "INSERT INTO employee (first_name, last_name) VALUES ?";
+			connection.query(query, [[firstandLastName]], function(err, res) {
+				runSearch();
+			});
+		});
+}
