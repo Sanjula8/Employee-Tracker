@@ -29,7 +29,6 @@ function runSearch() {
 				"View all employees",
 				"Search for an employee",
 				"View all departments",
-				"View all managers",
 				"View all roles",
 				"Add Employee",
 				"Add Department",
