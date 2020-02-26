@@ -27,12 +27,21 @@ The database schema contains the below three tables:
 When the command-line is prompted, the below prompts will show up:
 
 **View all employees** - Allows the user to view all employees
+
 **Search for an employee** - Allows the user to search for an employee by last name
+
 **View all departments** - Allows the user to view all deparments
+
 **View all roles** - Allows the user to view all roles
+
 **Add Employee** - Allows the user to add an employee
+
 **Add Department** - Allows the user to add a new department
+
 **Add Role** - Allows the user to add a new role
+
 **Remove Employee** - Allows the user to remove an employee
+
 **Update Employee Role** - Allows the user to update the employee role by using the employee ID
+
 **Exit** - Exits the application
